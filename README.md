@@ -155,6 +155,18 @@ If nothing changes, check whether the Tango 2 is joystick **2** or another ID ra
 
 On this setup, opening the map with the radio places the cursor over the helicopter's central marker, displaying a tooltip over the map. Wardogs' Free Cursor setting did not solve it. The workaround waits 300 ms after the **actual map rocker button** becomes active, then moves the Windows cursor to the top-right of the primary display (20 px inset). The game's map binding stays assigned directly to the joystick button.
 
+### Before / after: the map tooltip problem
+
+Opening the tactical map with the radio initially leaves the cursor directly over your helicopter marker. Wardogs then opens the vehicle hover card, which can cover a large part of the map—and becomes even bigger when passengers are aboard.
+
+**Before — cursor centred on the helicopter, triggering the hover tooltip:**
+
+![Tactical map obscured by the helicopter hover tooltip](assets/images/wardogs-map-tooltip-before.png)
+
+**After — cursor moved to the top-right by AutoHotkey, leaving the map unobstructed:**
+
+![Tactical map with the helicopter marker visible and no hover tooltip](assets/images/wardogs-map-tooltip-after.png)
+
 Install **AutoHotkey v2**, then run [`scripts/wardogs-map-cursor.ahk`](scripts/wardogs-map-cursor.ahk). The tested script polls `1Joy5` every 20 ms, acts only on a new press, and retains **F8** as a manual fallback. Edit `1Joy5` for your joystick ID/button. The cursor target uses `A_ScreenWidth` and `A_ScreenHeight` screen coordinates; on a multi-monitor arrangement you may need to adapt the target.
 
 ```ahk
