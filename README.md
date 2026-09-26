@@ -23,6 +23,21 @@ A practical, **tested personal configuration** for using a TBS Tango 2 FPV radio
 
 The radio's four main inputs are `Thr`, `Ail`, `Ele`, `Rud`, each at 100% in the photographed Inputs/Mixes configuration. Additional switch mixes occupy later channels; do not assume that a radio channel number equals the Windows joystick button number.
 
+### Why the switch mixes start at CH9
+
+This is the important USB joystick mapping detail. In the classic OpenTX-style joystick layout, **CH1–CH8 are exported to Windows as analogue axes**, whereas **CH9–CH32 are exported as digital buttons**. A button is considered pressed when its channel output is above zero. See the [OpenTX joystick emulation documentation](https://doc.open-tx.org/manual-for-opentx-2-2/advanced-features/radio_joystick). Our FreedomTX 1.3.5 radio's observed behaviour follows this pattern.
+
+That is why we moved the switch mixes out of CH5–CH8 and placed them at **CH9 onward**: otherwise Windows sees their channel values as extra axes rather than straightforward button presses for Wardogs to bind. The four flight sticks remain on CH1–CH4, while CH5–CH8 can remain unused.
+
+| Radio channel range | USB interpretation | Our use |
+| --- | --- | --- |
+| CH1–CH4 | Analogue axes | Collective, roll, pitch, yaw |
+| CH5–CH8 | Analogue axes | Left unused |
+| CH9 onward | Digital buttons | Rockers, rear push-buttons and logical-switch pulse |
+
+For the default mapping, CH9 corresponds to Windows joystick button 1, so **CH13 corresponds to button 5**. Confirm with `joy.cpl` rather than assuming another firmware or USB configuration uses the same layout. This also explains why mapping a switch to a channel is not the same as assigning its Windows button number.
+
+
 ![Inputs](assets/images/freedomtx-inputs.jpg)
 ![Mixes, first page](assets/images/freedomtx-mixes-1.jpg)
 ![Mixes, later channels](assets/images/freedomtx-mixes-2.jpg)
@@ -149,7 +164,7 @@ WatchMapButton() {
 F8::MouseMove A_ScreenWidth - 20, 20, 0
 ```
 
-**Why button 5?** During setup, we initially identified the map rocker as joystick button 3, but button 3 was actually permanently active. The rocker briefly activates button 5. That incorrect button number—not a demonstrated limitation of AutoHotkey joystick hotkeys—was why the earlier scripts did nothing. An F8 test independently confirmed that Wardogs accepts simulated mouse movement. The final working script uses 20 ms polling to catch button 5's brief pulse; polling is the tested approach here, not a proven requirement over a correctly mapped `1Joy5` hotkey.
+**Why button 5?** In the classic channel mapping, CH13 becomes Windows button 5. During setup, we initially identified the map rocker as joystick button 3, but button 3 was actually permanently active. The rocker briefly activates button 5. That incorrect button number—not a demonstrated limitation of AutoHotkey joystick hotkeys—was why the earlier scripts did nothing. An F8 test independently confirmed that Wardogs accepts simulated mouse movement. The final working script uses 20 ms polling to catch button 5's brief pulse; polling is the tested approach here, not a proven requirement over a correctly mapped `1Joy5` hotkey.
 
 ## Troubleshooting
 
