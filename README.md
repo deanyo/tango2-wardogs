@@ -78,6 +78,19 @@ The photograph shows the edge conditions and OR logic. The exact small timing fi
 
 Signal flow: **SA changes position → L01 or L02 edge pulse → L03 OR → CH13 mix → USB joystick output**. Use the channel monitor to verify a momentary change in CH13 on *both* switch directions. In Windows, the exposed button number may be different from 13.
 
+## Suggested helicopter bindings
+
+These are ergonomic suggestions based on the photographed Tango 2 layout and the controls used in this setup—not a claim that every reader's Windows button numbering will match. Bind the actions in Wardogs using the **physical switch**, and use `joy.cpl` to confirm the actual button number.
+
+| Physical control | Suggested in-game action | Why it works |
+| --- | --- | --- |
+| Left three-position rocker (SB, CH11 with the CV1 V curve) | Toggle first-person / third-person camera | Either outer position produces the same action; centre is neutral. Easy to flick without taking your thumbs off the sticks. |
+| Right two-position rocker (SA, L01/L02/L03 → CH13) | Toggle minigun on/off | Both directions produce a momentary press, giving a natural toggle action instead of a permanently held button. |
+
+**Important:** These are the intended physical-control assignments. The HOTAS screenshots clearly establish the four flight axes, but do not conclusively establish the Windows button numbers for every auxiliary action. In this particular configuration, AutoHotkey detected the map rocker as `1Joy5`; do not assume that is a universal mapping or equate it with CH13 without testing. The map cursor workaround is documented separately below.
+
+If you use the same rocker for another action, choose one binding per physical control or deliberately configure an alternate mode. Verify each assigned button with the game's binding capture and the Windows joystick panel.
+
 ## 4. Verify Windows buttons before binding or scripting
 
 1. Open `joy.cpl`, select the TBS joystick and open **Properties**.
