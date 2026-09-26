@@ -20,6 +20,23 @@ A practical, **tested personal configuration** for using a TBS Tango 2 FPV radio
 6. Bind your other actions by flicking the physical switches. For both ends of a three-position rocker to act as one button, use the **CV1 three-point V curve** below. For a press on either movement of a two-position rocker, use the **L01/L02/L03 edge-pulse setup** below.
 7. **Optional map fix:** Install AutoHotkey v2 and run [`scripts/wardogs-map-cursor.ahk`](scripts/wardogs-map-cursor.ahk). It moves the cursor away from your helicopter marker when the map opens. Change `1Joy5` if your map button has a different number.
 
+### Suggested bindings at a glance
+
+| Tango 2 control | Wardogs action |
+| --- | --- |
+| Left stick up/down | Collective |
+| Left stick left/right | Yaw |
+| Right stick up/down | Pitch |
+| Right stick left/right | Roll |
+| Left three-position rocker | First-/third-person view |
+| Left two-position rocker | Tactical map |
+| Right two-position rocker | Minigun toggle + fire (shared binding) |
+| Left rear push-button | Drop cargo |
+| Right rear push-button | Flare |
+| Right three-position rocker | Horn |
+
+Bind by moving/flicking the **physical control** in Wardogs; Windows button numbers can differ. See the detailed [binding notes](#suggested-helicopter-bindings-tested-physical-layout) below.
+
 The sections below explain each step and show the actual radio and game settings.
 
 ## What you need
