@@ -78,18 +78,26 @@ The photograph shows the edge conditions and OR logic. The exact small timing fi
 
 Signal flow: **SA changes position → L01 or L02 edge pulse → L03 OR → CH13 mix → USB joystick output**. Use the channel monitor to verify a momentary change in CH13 on *both* switch directions. In Windows, the exposed button number may be different from 13.
 
-## Suggested helicopter bindings
+## Suggested helicopter bindings (tested physical layout)
 
-These are ergonomic suggestions based on the photographed Tango 2 layout and the controls used in this setup—not a claim that every reader's Windows button numbering will match. Bind the actions in Wardogs using the **physical switch**, and use `joy.cpl` to confirm the actual button number.
+These are the assignments used on this Tango 2. The **physical switch** matters more than any Windows button number: check your own mapping with `joy.cpl` and bind in Wardogs by operating the intended control.
 
-| Physical control | Suggested in-game action | Why it works |
+| Tango 2 control | Wardogs assignment | Notes |
 | --- | --- | --- |
-| Left three-position rocker (SB, CH11 with the CV1 V curve) | Toggle first-person / third-person camera | Either outer position produces the same action; centre is neutral. Easy to flick without taking your thumbs off the sticks. |
-| Right two-position rocker (SA, L01/L02/L03 → CH13) | Toggle minigun on/off | Both directions produce a momentary press, giving a natural toggle action instead of a permanently held button. |
+| Left stick vertical (Thr) | Collective | Non-self-centring stick; turn self-centring collective off in-game. |
+| Left stick horizontal (Rud) | Yaw | Axis 3 in the photographed configuration. |
+| Right stick vertical (Ele) | Pitch | Axis 2, with invert pitch enabled in-game. |
+| Right stick horizontal (Ail) | Roll | Axis 1. |
+| Left three-position rocker (SB) | First-/third-person view toggle | The three-point CV1 V curve makes either end produce the same action, with neutral centre. |
+| Left two-position rocker | Tactical map / minimap | AutoHotkey detects its Windows button as `1Joy5` on this PC. |
+| Right two-position rocker (SA) | Minigun on/off **and** fire | Both functions are intentionally bound to this same rocker in the current setup; L01/L02/L03 generates a momentary pulse in either direction. |
+| Left rear momentary push-button | Drop cargo | A genuine button, not a latching switch. |
+| Right rear momentary push-button | Flare | A genuine button. |
+| Right three-position rocker | Horn | Current assignment. |
 
-**Important:** These are the intended physical-control assignments. The HOTAS screenshots clearly establish the four flight axes, but do not conclusively establish the Windows button numbers for every auxiliary action. In this particular configuration, AutoHotkey detected the map rocker as `1Joy5`; do not assume that is a universal mapping or equate it with CH13 without testing. The map cursor workaround is documented separately below.
+**About the shared right-rocker binding:** Because minigun toggle and fire are assigned to the same input, flicking it can activate both actions together. This reflects the photographed/personal setup, not a recommendation for independent weapon controls. If you want separate firing and toggling, give them different inputs.
 
-If you use the same rocker for another action, choose one binding per physical control or deliberately configure an alternate mode. Verify each assigned button with the game's binding capture and the Windows joystick panel.
+Windows joystick button numbers vary; do **not** infer them from channel numbers such as CH11 or CH13. Confirm each button in `joy.cpl`. In particular, button 3 appeared permanently active in the diagnostic, while button 5 pulsed when the **left map rocker** was flicked. The map workaround below therefore watches `1Joy5` in this tested setup.
 
 ## 4. Verify Windows buttons before binding or scripting
 
