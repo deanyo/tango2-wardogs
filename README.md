@@ -149,7 +149,7 @@ WatchMapButton() {
 F8::MouseMove A_ScreenWidth - 20, 20, 0
 ```
 
-**Why polling?** We confirmed the joystick's actual brief pulse with a live button-state diagnostic. An earlier script watched permanently-active button 3, so it never saw a new press. A manual F8 test confirmed that Wardogs accepted AutoHotkey mouse movement before the correct button was identified.
+**Why button 5?** During setup, we initially identified the map rocker as joystick button 3, but button 3 was actually permanently active. The rocker briefly activates button 5. That incorrect button number—not a demonstrated limitation of AutoHotkey joystick hotkeys—was why the earlier scripts did nothing. An F8 test independently confirmed that Wardogs accepts simulated mouse movement. The final working script uses 20 ms polling to catch button 5's brief pulse; polling is the tested approach here, not a proven requirement over a correctly mapped `1Joy5` hotkey.
 
 ## Troubleshooting
 
